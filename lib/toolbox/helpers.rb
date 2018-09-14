@@ -42,7 +42,7 @@ module Toolbox
     end
 
     def print_options(config)
-      Kernel.printf 'print_options not implemented yet.'
+      Kernel.printf 'Toolbox::Helpers #print_options not implemented yet.'
       # Use StressTrading::Config pring each value and key.
     end
 

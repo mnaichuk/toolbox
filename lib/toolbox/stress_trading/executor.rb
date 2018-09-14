@@ -10,12 +10,14 @@ module Toolbox
       end
 
       def prepare_traders
-        traders = config.value(:traders).split(',')
-        Kernel.puts ''
-        traders.each(&method(:register_user))
-        Kernel.print 'Making each trader billionaire... '
-        traders.each(&method(:become_billionaire))
-        Kernel.puts 'OK'
+        Kernel.printf 'Toolbox::StressTrading::Executor #print_options not implemented yet.'
+        Kernel.printf 'We expect that your users where already created and have enough funds.'
+        # traders = config.value(:traders).split(',')
+        # Kernel.puts ''
+        # traders.each(&method(:register_user))
+        # Kernel.print 'Making each trader billionaire... '
+        # traders.each(&method(:become_billionaire))
+        # Kernel.puts 'OK'
       end
 
       def traders

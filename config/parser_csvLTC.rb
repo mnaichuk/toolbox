@@ -16,7 +16,7 @@ doc = is_file ? CSV.read(file) : CSV.parse(file.read)
 fields = doc.shift
 records = Array.new
 doc.each_with_index do |row, i|
-  if i%2 == 1 && i%3 == 1 && i%7 == 1
+  if i%2 == 1 && i%3 == 0 
     count += 1
     record = Array.new
     fields.each_with_index do |field, j|

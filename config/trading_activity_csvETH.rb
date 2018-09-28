@@ -24,14 +24,14 @@ def build_order(market_id, order_row, options={})
 end
 
 def update_dependant_trades_timestamp(orders_ids)
-  Trade.where(ask_id: orders_ids) + Trade.where(bid_id: orders_ids).each do |trade|
+  Trade.where(market_id: 'ethbtc').each do |trade|
     trade.created_at = trade.updated_at = [trade.bid.created_at,trade.ask.created_at].max
     trade.save!
   end
 end
 
 def wait_for_execution
-  sleep_time = 2
+  sleep_time = 4
   sleep sleep_time
   trade_count = Trade.count
   loop do

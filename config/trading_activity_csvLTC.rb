@@ -24,10 +24,15 @@ def build_order(market_id, order_row, options={})
 end
 
 def update_dependant_trades_timestamp(orders_ids)
-  Trade.where(market_id 'ltcbtc').each do |trade|
+  Trade.where(market_id: 'ltcbtc').each do |trade|
     trade.created_at = trade.updated_at = [trade.bid.created_at,trade.ask.created_at].max
     trade.save!
   end
+end
+
+def update_first
+  first_trade_created = Trade.where(market_id: :ltcbtc).pluck(:created_at).min
+  Trade.where(market_id: :ltcbtc).first.update(created_at: first_trade_created, updated_at: first_trade_created)
 end
 
 def wait_for_execution
@@ -60,6 +65,8 @@ def trading_activity_seed
 
   wait_for_execution
   update_dependant_trades_timestamp(orders_ids)
+  puts "Update first"
+  update_first
   # TODO: output seeding results.
 end
 

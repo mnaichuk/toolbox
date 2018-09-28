@@ -24,7 +24,7 @@ def build_order(market_id, order_row, options={})
 end
 
 def update_dependant_trades_timestamp(orders_ids)
-  Trade.where(ask_id: orders_ids) + Trade.where(bid_id: orders_ids).each do |trade|
+  Trade.all.each do |trade|
     trade.created_at = trade.updated_at = [trade.bid.created_at,trade.ask.created_at].max
     trade.save!
   end

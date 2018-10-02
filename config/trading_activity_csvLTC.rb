@@ -49,7 +49,7 @@ end
 
 def trading_activity_seed
   orders_ids = []
-  market = 'ltcbtc'
+  market = 'xrpbtc'
   traders = 'mykola.kuvshynnikov@gmail.com'
 
   yml_data = YAML.load_file('config/trading_activity_seed_LTC.yml')

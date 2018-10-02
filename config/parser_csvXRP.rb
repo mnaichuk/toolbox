@@ -17,7 +17,7 @@ fields = doc.shift
 records = Array.new
 last_order_time = 0
 doc.each_with_index do |row, i|
-  if (row[0].to_i - last_order_time).abs < 2*60
+  if (row[0].to_i - last_order_time).abs < 1*60
     next
   end
   last_order_time = row[0].to_i
